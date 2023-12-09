@@ -26,6 +26,37 @@ def value(hand):
         return val + 13**5 * 5
     return val
 
+def value2(hand):
+    val = 0
+    for i, c in enumerate(hand.replace("J", "")):
+        val += "J23456789TQKA".index(c) * 13**(4-i)
+    amt = list({x :hand.count(x) for x in hand}.values())
+    jamt = hand.count("J")
+    five = amt.count(5) == 1
+    four = amt.count(4) == 1
+    three = amt.count(3) == 1
+    onepair = amt.count(2) == 1
+    twopair = amt.count(2) == 2
+    full = three and onepair
+    if four and jamt == 1:
+        five = True
+    elif three and jamt == 1:
+        four = True
+    elif three and jamt == 
+    if five:
+        return val + 13**5 * 10
+    if four:
+        return val + 13**5 * 9
+    if full:
+        return val + 13**5 * 8
+    if three:
+        return val + 13**5 * 7
+    if twopair:
+        return val + 13**5 * 6
+    if onepair:
+        return val + 13**5 * 5
+    return val
+
 def prob1(input):
     s = sorted(parseInput(input), key=lambda x: value(x[0]))
     print(s)
